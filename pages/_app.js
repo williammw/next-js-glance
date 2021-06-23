@@ -1,5 +1,5 @@
 // import App from 'next/app'
-
+// this _app.js is top level js, style will across all component
 import '../styles.css'
 
 function MyApp({ Component, pageProps }) {

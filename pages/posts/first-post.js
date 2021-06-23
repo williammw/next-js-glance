@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Head from 'next/head'
-
+import Card from '../../components/Card'
 export default function FirstPost() {
   return (
     <>
@@ -15,6 +15,7 @@ export default function FirstPost() {
         </a>
       </Link>
     </h2>
+    <Card />
     </>
   )
 }

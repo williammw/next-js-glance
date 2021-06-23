@@ -1,5 +1,6 @@
 import Head from 'next/head'
-
+import Link from 'next/link'
+// import '../style.css'
 export default function Home() {
   return (
     <div className="container">
@@ -10,7 +11,9 @@ export default function Home() {
 
       <main>
         <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          <Link href="posts/first-post">
+            <a>this page</a>
+          </Link>
         </h1>
 
         <p className="description">

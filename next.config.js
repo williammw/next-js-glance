@@ -1,5 +1,5 @@
 module.exports ={
   images:{
-    domains: ["www.legco.gov.hk"],
+    domains: ["www.legco.gov.hk","image.tmdb.org"],
   }
 }

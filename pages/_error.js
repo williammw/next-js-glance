@@ -1,4 +1,4 @@
-https://nextjs.org/docs/advanced-features/custom-error-page
+// https://nextjs.org/docs/advanced-features/custom-error-page
 
 function Error({ statusCode }) {
   return (

@@ -23,7 +23,7 @@ export default function hsif({results}) {
 }
 
 export async function getServerSideProps(context){
-  const jj = []
+  const snp = []
   const snapshot = await db.collection('cities')
   .get().then((snapshot) => {
     snapshot.forEach((obj) => {       
@@ -35,7 +35,7 @@ export async function getServerSideProps(context){
 
   return { 
     props: { 
-      results : jj,
+      results : snp,
     },
   }
 }

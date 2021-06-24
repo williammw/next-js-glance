@@ -1,47 +1,52 @@
 import Head from 'next/head'
-import Layout, { siteTitle } from '../components/layout'
+import Results from '../components/Results'
 import utilStyles from '../styles/utils.module.css'
-import { getSortedPostsData } from '../lib/posts'
+// import { getSortedPostsData } from '../lib/posts'
+import requests from '../utils/requests'
 
-export async function getStaticProps() {
-  const allPostsData = getSortedPostsData()
-  return {
-    props: {
-      allPostsData
-    }
-  }
-}
 
-export default function Home({allPostsData}) {
+// export async function getStaticProps() {
+//   const allPostsData = getSortedPostsData()
+//   return {
+//     props: {
+//       allPostsData
+//     }
+//   }
+// }
+
+
+
+ function Home({results}) {
+
+  //  console.log(results)
 
   
   return (
-      <Layout home>
+      <>
         <Head>
-          <title>{siteTitle}</title>
+          <title>title</title>
         </Head>
-        <section className={utilStyles.headingMd}>
-          <p>[Your Self Introduction]</p>
-          <p>
-            (This is a sample website - you’ll be building a site like this on{' '}
-            <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
-          </p>
-        </section>
+        <Results results={results}/>
+    
 
-        <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
-        <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-              {title}
-              <br />
-              {id}
-              <br />
-              {date}
-            </li>
-          ))}
-        </ul>
-      </section>
-      </Layout> 
+        
+
+      </> 
   )
 }
+
+export async function getServerSideProps(context){
+  const genre = context.query.genre;
+  const request = await fetch(`https://api.themoviedb.org/3${
+    requests[genre]?.url || requests.fetchTrending.url
+  }`
+  ).then((res) => res.json())
+
+  return { 
+    props: { 
+      results : request.results,
+    },
+  }
+}
+
+export default Home

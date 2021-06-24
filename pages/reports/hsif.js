@@ -10,13 +10,14 @@ export default function hsif({results}) {
  console.log(results)
   return (
    <h1>
-     {results.map((result)=>(
-       <>
+     {results.map((result, idx)=>(
+       <div key={idx}>
         <div>{result.capital}</div>
         <div>{result.country}</div>
         <div>{result.name}</div>
         <div>{result.population}</div>
-      </>
+        <hr/>
+      </div>
      ))}
    </h1>
   )
@@ -27,7 +28,7 @@ export async function getServerSideProps(context){
   const snapshot = await db.collection('cities')
   .get().then((snapshot) => {
     snapshot.forEach((obj) => {       
-        jj.push( obj.data() )
+        snp.push( obj.data() )
         // console.log(obj.data())
       })
   })

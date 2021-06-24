@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Results from '../components/Results'
-import utilStyles from '../styles/utils.module.css'
+// import utilStyles from '../styles/utils.module.css'
 // import { getSortedPostsData } from '../lib/posts'
 import requests from '../utils/requests'
 
@@ -18,7 +18,7 @@ import requests from '../utils/requests'
 
  function Home({results}) {
 
-  //  console.log(results)
+    console.log(results)
 
   
   return (
@@ -34,7 +34,7 @@ import requests from '../utils/requests'
       </> 
   )
 }
-
+//https://api.themoviedb.org/3/trending/all/day?api_key=4296c14b497b17acadd5928634804c12
 export async function getServerSideProps(context){
   const genre = context.query.genre;
   const request = await fetch(`https://api.themoviedb.org/3${

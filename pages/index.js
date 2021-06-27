@@ -4,7 +4,7 @@ import Results from '../components/Results'
 // import { getSortedPostsData } from '../lib/posts'
 import requests from '../utils/requests'
 import { getSession } from 'next-auth/client'
-import AccessDenied from '../components/AccessDenied'
+// import AccessDenied from '../components/AccessDenied'
 import { signIn, signOut, useSession } from 'next-auth/client'
 // export async function getStaticProps() {
 //   const allPostsData = getSortedPostsData()
@@ -20,7 +20,7 @@ import { signIn, signOut, useSession } from 'next-auth/client'
  function Home({results}) {
   const [ session, loading ] = useSession()
   if (typeof window !== 'undefined' && loading) return null
-  if (!session) { return  (<><AccessDenied/></>)}
+  // if (!session) { return  (<><AccessDenied/></>)}
   return (
     <>
     {!session && <>

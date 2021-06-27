@@ -4,16 +4,9 @@ import Results from '../components/Results'
 // import { getSortedPostsData } from '../lib/posts'
 import requests from '../utils/requests'
 import { getSession } from 'next-auth/client'
-// import AccessDenied from '../components/AccessDenied'
+import Layout from '../components/Layout'
 import { signIn, signOut, useSession } from 'next-auth/client'
-// export async function getStaticProps() {
-//   const allPostsData = getSortedPostsData()
-//   return {
-//     props: {
-//       allPostsData
-//     }
-//   }
-// }
+
 
 
 
@@ -22,7 +15,7 @@ import { signIn, signOut, useSession } from 'next-auth/client'
   if (typeof window !== 'undefined' && loading) return null
   // if (!session) { return  (<><AccessDenied/></>)}
   return (
-    <>
+    <Layout home> 
     {!session && <>
       Not signed in <br/>
       <button onClick={() => signIn()}>Sign in</button>
@@ -32,10 +25,12 @@ import { signIn, signOut, useSession } from 'next-auth/client'
       <button onClick={() => signOut()}>Sign out</button>
       <Head>
           <title>title</title>
-        </Head>
-        <Results results={results}/>
+      </Head>
+      <Results results={results}/>
     </>}
-  </>
+
+  </Layout>
+
   )
 }
 //https://api.themoviedb.org/3/trending/all/day?api_key=4296c14b497b17acadd5928634804c12

@@ -5,19 +5,19 @@ import db from '../../utils/firebase/firestore'
 
 
 export default function hsif({results}) {
- console.log(results)
+  console.log(results)
   return (
-   <h1>
-     {results.map((result, idx)=>(
-       <div key={idx}>
+  <h1>
+    {results.map((result, idx)=>(
+      <div key={idx}>
         <div>{result.capital}</div>
         <div>{result.country}</div>
         <div>{result.name}</div>
         <div>{result.population}</div>
         <hr/>
       </div>
-     ))}
-   </h1>
+    ))}
+  </h1>
   )
 }
 

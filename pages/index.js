@@ -20,7 +20,7 @@ import { signIn, signOut, useSession } from 'next-auth/client'
  function Home({results}) {
   const [ session, loading ] = useSession()
   if (typeof window !== 'undefined' && loading) return null
-  if (!session) { return  <AccessDenied/>}
+  if (!session) { return  (<><AccessDenied/></>)}
   return (
     <>
     {!session && <>

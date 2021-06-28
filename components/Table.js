@@ -1,5 +1,6 @@
 import React from "react";
-import { useTable } from "react-table";
+import styled from 'styled-components'
+import { useTable, useGroupBy, useExpanded } from 'react-table'
 
 function Table({ columns, data }) {
   const {

@@ -3,8 +3,9 @@ import Results from '../components/Results'
 // import utilStyles from '../styles/utils.module.css'
 // import { getSortedPostsData } from '../lib/posts'
 import requests from '../utils/requests'
-import { getSession } from 'next-auth/client'
+
 import Layout from '../components/Layout'
+import { getSession } from 'next-auth/client'
 import { signIn, signOut, useSession } from 'next-auth/client'
 
 
@@ -21,15 +22,17 @@ import { signIn, signOut, useSession } from 'next-auth/client'
       <button onClick={() => signIn()}>Sign in</button>
     </>}
     {session && <>
+      
       Signed in as {session.user.email} <br/>
       <button onClick={() => signOut()}>Sign out</button>
       <Head>
           <title>title</title>
       </Head>
-      <Results results={results}/>
+        <Results results={results}/>
+      
     </>}
-
-  </Layout>
+    </Layout>
+ 
 
   )
 }

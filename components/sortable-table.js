@@ -35,7 +35,7 @@ const SortableTable = () => {
     []
   )
 
-  const [data, setData] = React.useState(React.useMemo(() => makeData(20), []))
+  const [data, setData] = React.useState(React.useMemo(() => makeData(500), []))
   const [skipPageReset, setSkipPageReset] = React.useState(false)
 
   // We need to keep the table from resetting the pageIndex when we

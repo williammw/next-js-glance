@@ -16,13 +16,10 @@ function hsif() {
       Not signed in <br/>
       <button onClick={() => signIn()}>Sign in</button>
     </>}
-    {session && <>
-      
+    {session && <>      
       Signed in as {session.user.email} <br/>
-      <button onClick={() => signOut()}>Sign out</button>
-      
-      <SortableTable />
-      
+      <button onClick={() => signOut()}>Sign out</button>      
+      <SortableTable />      
     </>}
     </>
   )

@@ -5,10 +5,10 @@ export default NextAuth({
   // Configure one or more authentication providers
   providers: [
     // OAuth authentication providers
-    Providers.Apple({
-      clientId: process.env.APPLE_ID,
-      clientSecret: process.env.APPLE_SECRET
-    }),
+    // Providers.Apple({
+    //   clientId: process.env.APPLE_ID,
+    //   clientSecret: process.env.APPLE_SECRET
+    // }),
     Providers.Google({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,

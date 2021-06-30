@@ -6,7 +6,8 @@ import requests from '../utils/requests'
 import { getSession } from 'next-auth/client'
 import Layout from '../components/Layout'
 import { signIn, signOut, useSession } from 'next-auth/client'
-
+import TopNav from '../components/TopNav'
+import ContentContainer from '../components/ContentContainer'
 
 
 
@@ -16,21 +17,9 @@ import { signIn, signOut, useSession } from 'next-auth/client'
   // if (!session) { return  (<><AccessDenied/></>)}
   return (
     <> 
-    {!session && <>
-    {/* Sign In Page or public content */}
-      Not signed in <br/>
-      
-      <button onClick={() => signIn()}>Sign in</button>
-    </>}
-    {session && <>
-      Signed in as {session.user.email} <br/>
-      <button onClick={() => signOut()}>Sign out</button>
-      <Head>
-          <title>title</title>
-      </Head>
-      <Results results={results}/>
-    </>}
-  </>
+      <TopNav />
+      <ContentContainer/>
+    </>
 
   )
 }
@@ -53,3 +42,19 @@ export async function getServerSideProps(context){
 //https://next-auth.js.org/getting-started/client
 
 export default Home
+
+
+// {!session && <>
+//   {/* Sign In Page or public content */}
+//     Not signed in <br/>
+    
+//     <button onClick={() => signIn()}>Sign in</button>
+//   </>}
+//   {session && <>
+//     Signed in as {session.user.email} <br/>
+//     <button onClick={() => signOut()}>Sign out</button>
+//     <Head>
+//         <title>title</title>
+//     </Head>
+//     <Results results={results}/>
+//   </>}

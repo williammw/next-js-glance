@@ -13,9 +13,9 @@ import Box from '@material-ui/core/Box';
 import ProTip from '../src/ProTip';
 import Link from '../src/Link';
 import Copyright from '../src/Copyright';
-import dynamic from 'next/dynamic'
+// import dynamic from 'next/dynamic'
 import TopNav from '../components/TopNav';
-
+import FinancialChart from '../components/FinancialChart';
 
  function Home({results}) {
   const [ session, loading ] = useSession()
@@ -27,7 +27,8 @@ import TopNav from '../components/TopNav';
     <>
     <TopNav/>
     <Container maxWidth="sm">
-    <Box my={4}>
+    <Box my={8}>
+      <FinancialChart />
       <Typography variant="h4" component="h1" gutterBottom>
         Next.js example
       </Typography>
@@ -37,6 +38,7 @@ import TopNav from '../components/TopNav';
       <ProTip />
       <Copyright />
     </Box>
+    
   </Container>
   </>
   )

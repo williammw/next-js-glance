@@ -7,9 +7,17 @@ import Button from '@material-ui/core/Button';
 import ProTip from '../src/ProTip';
 import Link from '../src/Link';
 import Copyright from '../src/Copyright';
+import TopNav from '../components/TopNav';
+import { getSession } from 'next-auth/client'
+import { signIn, signOut, useSession } from 'next-auth/client'
 
-export default function About() {
+
+ function About() {
+  const [ session, loading ] = useSession()
+  if (typeof window !== 'undefined' && loading) return null
   return (
+    <>
+    <TopNav/>
     <Container maxWidth="sm">
       <Box my={4}>
         <Typography variant="h4" component="h1" gutterBottom>
@@ -22,5 +30,17 @@ export default function About() {
         <Copyright />
       </Box>
     </Container>
+    </>
   );
 }
+
+export async function getServerSideProps(context){
+
+  return { 
+    props: { 
+      session: await getSession(context)
+    },
+  }
+}
+
+export default About

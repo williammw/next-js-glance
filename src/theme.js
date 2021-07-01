@@ -11,6 +11,9 @@ const theme = createMuiTheme({
         },
         p:{
           fontSize:20,
+        },
+        div:{
+          color:'#3c4043',
         }
       },
     },

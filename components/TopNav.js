@@ -174,7 +174,7 @@ export default function TopNav() {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            Pople
+            People need inspiration and they need guidelines
           </Typography>
           {/* <div className={classes.search}>
             <div className={classes.searchIcon}>

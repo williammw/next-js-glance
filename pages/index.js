@@ -16,6 +16,7 @@ import Copyright from '../src/Copyright';
 // import dynamic from 'next/dynamic'
 import TopNav from '../components/TopNav';
 import FinancialChart from '../components/FinancialChart';
+import GlobalSearchBar from '../components/GlobalSearchBar';
 
  function Home({results}) {
   const [ session, loading ] = useSession()
@@ -29,9 +30,10 @@ import FinancialChart from '../components/FinancialChart';
     <Container maxWidth="sm">
     <Box my={8}>
       <FinancialChart />
-      <Typography variant="h4" component="h1" gutterBottom>
+      {/* <Typography variant="h4" component="h1" gutterBottom>
         Next.js example
-      </Typography>
+      </Typography> */}
+      <GlobalSearchBar />
       <Link href="/about" color="secondary">
         Go to the about page
       </Link>

@@ -29,3 +29,17 @@ img {
   max-width: 100%;
   display: block;
 }
+.cccsss{
+  border:1px solid #ccc;
+  /* border-top-left-radius:     1em 5em;
+  border-top-right-radius:    1em 5em;
+  border-bottom-right-radius: 1em 5em;
+  border-bottom-left-radius:  1em 5em; */
+}
+.global-search-bar{
+  width:100%;
+}
+.global-search-bar-form-control{
+  margin:15px !important;
+  width:95% !important;
+}

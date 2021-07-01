@@ -12,15 +12,14 @@ const defaultProps = {
 
 function FinancialChart() {
   return (
-
-    <Typography variant="x" component="x" gutterBottom>
-        <p>dqwuioqwdiojqwdioj</p>
-        Financial Chart goes here <br/>
-        Markets:: HSIF HSIO 00700.hk <br/>
-        indexes block <br/>
-          
-    </Typography>
-    
+    <div className="financial-chart-container">
+      <Typography variant="x" component="x" gutterBottom>
+          <p>dqwuioqwdiojqwdioj</p>
+          Financial Chart goes here <br/>
+          Markets:: HSIF HSIO 00700.hk <br/>
+          indexes block <br/> 
+      </Typography>
+    </div>
   )
 }
 

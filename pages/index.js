@@ -27,13 +27,15 @@ import GlobalSearchBar from '../components/GlobalSearchBar';
     // 
     <>
     <TopNav/>
-    <Container maxWidth="sm">
+    <Container maxWidth="md">
     <Box my={8}>
       <FinancialChart />
       {/* <Typography variant="h4" component="h1" gutterBottom>
         Next.js example
       </Typography> */}
+      <Container maxWidth="xs">
       <GlobalSearchBar />
+      </Container>
       <Link href="/about" color="secondary">
         Go to the about page
       </Link>

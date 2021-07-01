@@ -43,3 +43,6 @@ img {
   margin:15px !important;
   width:95% !important;
 }
+.financial-chart-container{
+  border: 1px solid #ccc;
+}

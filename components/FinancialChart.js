@@ -4,6 +4,9 @@ import Box from '@material-ui/core/Box';
 // https://codesandbox.io/s/8m6n8?file=/src/Chart.jsx
 // https://github.com/recharts/recharts
 
+import Kchart from './Charts/Kchart'
+import IndexLineChart from './Charts/IndexLineChart'
+
 const defaultProps = {
   bgcolor: 'background.paper',
   m: 1,
@@ -16,10 +19,7 @@ function FinancialChart() {
   return (
     <div className="financial-chart-container">
       <Typography variant="x" component="x" gutterBottom>
-          <p>dqwuioqwdiojqwdioj</p>
-          Financial Chart goes here <br/>
-          Markets:: HSIF HSIO 00700.hk <br/>
-          indexes block <br/> 
+          <IndexLineChart />
       </Typography>
     </div>
   )

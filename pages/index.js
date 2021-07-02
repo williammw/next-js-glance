@@ -26,7 +26,7 @@ import GlobalSearchBar from '../components/GlobalSearchBar';
   return (
     // 
     <>
-    <TopNav/>
+    {/* <TopNav/> */}
     <Container maxWidth="md">
     <Box my={8}>
       <FinancialChart />

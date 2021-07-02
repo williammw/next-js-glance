@@ -17,7 +17,7 @@ import { signIn, signOut, useSession } from 'next-auth/client'
   if (typeof window !== 'undefined' && loading) return null
   return (
     <>
-    <TopNav/>
+    {/* <TopNav/> */}
     <Container maxWidth="sm">
       <Box my={4}>
         <Typography variant="h4" component="h1" gutterBottom>

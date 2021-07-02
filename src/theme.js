@@ -48,12 +48,6 @@ const theme = createMuiTheme({
     },
     h6: {
       "fontWeight": 100,
-    },
-    p:{
-      "lineHeight":0,
-      "borderRadius": 3,
-      "border": 0,
-      "color": 'white',
     }
   },
   palette: {

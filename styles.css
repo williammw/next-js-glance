@@ -46,3 +46,7 @@ img {
 .financial-chart-container{
   border: 1px solid #ccc;
 }
+.MuiBox-root-10 {
+  margin-top: 16px !important;
+  margin-bottom: 16px !important;
+}

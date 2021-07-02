@@ -24,7 +24,7 @@ export default function GlobalSearchBar() {
         {/* <InputLabel htmlFor="input-with-icon-adornment">With a start adornment</InputLabel> */}
         <Input
         className="global-search-bar"
-          fullWidth
+          fullWidth={true}
           id="input-with-icon-adornment"
           startAdornment={
             <InputAdornment position="start">

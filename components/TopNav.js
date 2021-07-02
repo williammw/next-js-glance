@@ -14,7 +14,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
-
+import styles from './TopNav.module.css';
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
@@ -139,14 +139,14 @@ export default function TopNav() {
         </IconButton>
         <p>Messages</p>
       </MenuItem> */}
-      {/* <MenuItem>
+      <MenuItem>
         <IconButton aria-label="show 11 new notifications" color="inherit">
           <Badge badgeContent={11} color="secondary">
             <NotificationsIcon />
           </Badge>
         </IconButton>
         <p>Notifications</p>
-      </MenuItem> */}
+      </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           aria-label="account of current user"
@@ -163,7 +163,7 @@ export default function TopNav() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static">
+      <AppBar position="static" className={styles.shadow}>
         <Toolbar>
           <IconButton
             edge="start"
@@ -174,12 +174,13 @@ export default function TopNav() {
             <MenuIcon />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            people need inspiration and they need guildeline
+            People need inspiration and they need guidelines
           </Typography>
           {/* <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
+            
             <InputBase
               placeholder="Search…"
               classes={{
@@ -201,16 +202,16 @@ export default function TopNav() {
                 <NotificationsIcon />
               </Badge>
             </IconButton>
-            {/* <IconButton
+            <IconButton
               edge="end"
               aria-label="account of current user"
               aria-controls={menuId}
               aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
+              // onClick={handleProfileMenuOpen}
               color="inherit"
             >
               <AccountCircle />
-            </IconButton> */}
+            </IconButton>
           </div>
           <div className={classes.sectionMobile}>
             <IconButton

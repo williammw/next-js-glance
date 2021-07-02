@@ -6,7 +6,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI,  Oxygen, Ubuntu,
     Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   line-height: 1.6;
   font-size: 18px;
@@ -28,4 +28,21 @@ a:hover {
 img {
   max-width: 100%;
   display: block;
+}
+.cccsss{
+  border:1px solid #ccc;
+  /* border-top-left-radius:     1em 5em;
+  border-top-right-radius:    1em 5em;
+  border-bottom-right-radius: 1em 5em;
+  border-bottom-left-radius:  1em 5em; */
+}
+.global-search-bar{
+  width:100%;
+}
+.global-search-bar-form-control{
+  margin:15px !important;
+  width:95% !important;
+}
+.financial-chart-container{
+  border: 1px solid #ccc;
 }

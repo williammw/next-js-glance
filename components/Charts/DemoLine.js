@@ -7,7 +7,7 @@ function  DemoLine() {
     asyncFetch();
   }, []);
   const asyncFetch = () => {
-    fetch('https://gw.alipayobjects.com/os/bmw-prod/1d565782-dde4-4bb6-8946-ea6a38ccf184.json')
+    fetch('http://localhost:3000/api/demo')
       .then((response) => response.json())
       .then((json) => setData(json))
       .catch((error) => {
@@ -19,13 +19,24 @@ function  DemoLine() {
     padding: 'auto',
     xField: 'Date',
     yField: 'scales',
+    // geometryOptions: [
+    //   {
+    //     geometry: 'column',
+    //   },
+    //   {
+    //     geometry: 'line',
+    //     lineStyle: {
+    //       lineWidth: 2,
+    //     },
+    //   },
+    // ],
     annotations: [
-      {
-        type: 'regionFilter',
-        start: ['min', 'median'],
-        end: ['max', '0'],
-        color: '#F4664A',
-      },
+      // {
+      //   type: 'regionFilter',
+      //   start: ['min', 'median'],
+      //   end: ['max', '0'],
+      //   color: '#F4664A',
+      // },
       {
         type: 'text',
         position: ['min', 'median'],
@@ -43,6 +54,10 @@ function  DemoLine() {
         },
       },
     ],
+    slider: {
+      start: 0,
+      end: 1,
+    },
   };
   return <LineChart {...config} />;
 };

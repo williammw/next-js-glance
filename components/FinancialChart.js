@@ -5,6 +5,7 @@ import Box from '@material-ui/core/Box';
 // https://github.com/recharts/recharts
 
 import DemoLine from './Charts/DemoLine'
+import DemoStock from './Charts/DemoStock'
 // import IndexLineChart from './Charts/IndexLineChart'
 
 const defaultProps = {
@@ -21,6 +22,7 @@ function FinancialChart() {
       <Typography variant="x" component="x" gutterBottom>
           {/* <IndexLineChart /> */}
           <DemoLine/>
+          <DemoStock/>
       </Typography>
     </div>
   )

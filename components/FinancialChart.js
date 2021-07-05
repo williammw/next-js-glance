@@ -21,8 +21,9 @@ function FinancialChart() {
     <div className="financial-chart-container">
       <Typography variant="x" component="x" gutterBottom>
           {/* <IndexLineChart /> */}
-          <DemoLine/>
           <DemoStock/>
+          <DemoLine/>
+          
       </Typography>
     </div>
   )

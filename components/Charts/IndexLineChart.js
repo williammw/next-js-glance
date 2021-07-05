@@ -71,7 +71,7 @@ const IndexLineChart = () => {
           <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
         </LineChart>
         </>
-      {/* </ResponsiveContainer> */}
+      //  </ResponsiveContainer> 
     )
 }
 

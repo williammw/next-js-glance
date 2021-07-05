@@ -4,8 +4,8 @@ import Box from '@material-ui/core/Box';
 // https://codesandbox.io/s/8m6n8?file=/src/Chart.jsx
 // https://github.com/recharts/recharts
 
-import Kchart from './Charts/Kchart'
-import IndexLineChart from './Charts/IndexLineChart'
+import DemoLine from './Charts/DemoLine'
+// import IndexLineChart from './Charts/IndexLineChart'
 
 const defaultProps = {
   bgcolor: 'background.paper',
@@ -19,7 +19,8 @@ function FinancialChart() {
   return (
     <div className="financial-chart-container">
       <Typography variant="x" component="x" gutterBottom>
-          <IndexLineChart />
+          {/* <IndexLineChart /> */}
+          <DemoLine/>
       </Typography>
     </div>
   )

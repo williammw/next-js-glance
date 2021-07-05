@@ -50,3 +50,6 @@ img {
   margin-top: 16px !important;
   margin-bottom: 16px !important;
 }
+.MuiTableCell-root{
+  padding: 0 !important;
+}

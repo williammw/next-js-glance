@@ -18,6 +18,8 @@ function DemoStock() {
     data: data,
     xField: 'trade_date',
     yField: ['open', 'close', 'high', 'low'],
+    fallingFill: '#ef5350',
+    risingFill: '#26a69a',
     meta: {
       vol: { alias: '成交量' },
       open: { alias: '开盘价' },
@@ -25,10 +27,7 @@ function DemoStock() {
       high: { alias: '最高价' },
       low: { alias: '最低价' },
     },
-    slider: {
-      start: 0,
-      end: 1,
-    },
+    
     tooltip: {
       crosshairs: {
         line: {
@@ -56,6 +55,10 @@ function DemoStock() {
           style: { fill: '#363636' },
         },
       },
+    },
+    slider: {
+      start: 0,
+      end: 1,
     },
   };
   return <StockChart {...config} />;

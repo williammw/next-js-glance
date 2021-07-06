@@ -45,28 +45,26 @@ function DemoMultiLine(){
     PreTooltipData = currentData[0]?.data;
     showTooltip({ x, y });
   };
-  const handleMouseMove = ( evt ) => {
+  const handleMouseMove = ( plot ) => {
     console.log('reach?')
   }
 
   return (
-    <div >
+    <div>
       <LineChart
         {...config}
-        
-        
       />
       <AreaChart
         {...config}
-        
       />
       <ColumnChart
         {...config}
-        
-        
       />
     </div>
   );
 };
 
 export default DemoMultiLine;
+
+
+// https://charts.ant.design/guide/case

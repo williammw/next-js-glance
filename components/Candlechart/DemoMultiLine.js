@@ -14,7 +14,7 @@ function DemoMultiLine(){
     asyncFetch();
   }, []);
   const asyncFetch = () => {
-    fetch('http://localhost:3000/api/sp500')
+    fetch('http://localhost:3000/api/demostock')
       .then((response) => response.json())
       .then((json) => setData(json))
       .catch((error) => {
@@ -23,23 +23,23 @@ function DemoMultiLine(){
   };
   const config = {
     data,
-    xField: 'date',
-    yField: 'price',
+    xField: 'trade_date',
+    yField: 'vol',
     height: 200,
   };
 
   const showTooltip = ({ x, y }) => {
-    console.log('show tooltip')
+    // console.log('show tooltip')
     Object.keys(PlotMaps).forEach((plot) => {
       PlotMaps[plot].chart.showTooltip({ x, y });
     });
   };
 
   const setTooltipPosition = (evt, plot) => {
-    console.log('am i works?')
+    // console.log('am i works?')
     const { x, y } = evt.gEvent;
     const currentData = plot.chart.getTooltipItems({ x, y });
-    if (currentData[0]?.data.date === PreTooltipData?.date) {
+    if (currentData[0]?.data.trade_date === PreTooltipData?.trade_date) {
       return;
     }
     PreTooltipData = currentData[0]?.data;
@@ -53,12 +53,30 @@ function DemoMultiLine(){
     <div>
       <LineChart
         {...config}
+        chartRef={(plot) => {
+          PlotMaps.line = plot;
+          plot.on('plot:mousemove', (evt) => {
+            setTooltipPosition(evt, plot);
+          });
+        }}
       />
       <AreaChart
         {...config}
+        chartRef={(plot) => {
+          PlotMaps.area = plot;
+          plot.on('plot:mousemove', (evt) => {
+            setTooltipPosition(evt, plot);
+          });
+        }}
       />
       <ColumnChart
         {...config}
+        chartRef={(plot) => {
+          PlotMaps.column = plot;
+          plot.on('plot:mousemove', (evt) => {
+            setTooltipPosition(evt, plot);
+          });
+        }}
       />
     </div>
   );

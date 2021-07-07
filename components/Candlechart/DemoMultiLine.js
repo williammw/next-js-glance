@@ -133,7 +133,7 @@ function DemoMultiLine(){
           });
         }}
       />      
-      <AreaChart
+      {/* <AreaChart
         {...config}
         chartRef={(plot) => {
           PlotMaps.area = plot;
@@ -150,7 +150,7 @@ function DemoMultiLine(){
             setTooltipPosition(evt, plot);
           });
         }}
-      />
+      /> */}
     </div>
   );
 };

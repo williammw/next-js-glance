@@ -24,7 +24,7 @@ function FinancialChart() {
          {/* <DemoColumn/> */}
           {/* <DemoStock />
           <DemoLine />           */}
-          <DemoStock/>
+          {/* <DemoStock/> */}
           <DemoMultiLine/>
           
       </Typography>

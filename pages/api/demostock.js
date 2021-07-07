@@ -219,7 +219,8 @@ export default function handler(req, res) {
       "low": 2901.2425,
       "vol": 274804844,
       "amount": 334526327.4
-    }
+    },
+   
   ])
 }
 

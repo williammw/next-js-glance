@@ -34,12 +34,45 @@ function DemoMultiLine(){
     xField: 'trade_date',
     yField: 'vol',
     height: 200,
+    slider: {
+      start: 0,
+      end: 1,
+    },
   };
   const config_amt = {
     data: rdata,
     xField: 'trade_date',
     yField: 'amount',
     height: 200,
+    slider: {
+      start: 0,
+      end: 1,
+    },
+    yAxis: {
+      // format y axis label style
+      label: {
+        formatter: (value) => {
+          var newValue = value;
+          if (value >= 1000) {
+              var suffixes = ["", "k", "m", "b","t"];
+              var suffixNum = Math.floor( (""+value).length/3 );
+              var shortValue = '';
+              for (var precision = 2; precision >= 1; precision--) {
+                  shortValue = parseFloat( (suffixNum != 0 ? (value / Math.pow(1000,suffixNum) ) : value).toPrecision(precision));
+                  var dotLessShortValue = (shortValue + '').replace(/[^a-zA-Z 0-9]+/g,'');
+                  if (dotLessShortValue.length <= 2) { break; }
+              }
+              if (shortValue % 1 != 0)  shortValue = shortValue.toFixed(1);
+              newValue = shortValue+suffixes[suffixNum];
+          }
+          return newValue;
+        },
+        
+        // style: {
+        //   fill: '#FE740C',
+        // },
+      },
+    },
   };
 
   var config_stock = {
@@ -99,7 +132,7 @@ function DemoMultiLine(){
   };
 
   const setTooltipPosition = (evt, plot) => {
-    // console.log('am i works?')
+    // console.log('am i works?', plot);
     const { x, y } = evt.gEvent;
     const currentData = plot.chart.getTooltipItems({ x, y });
     // console.log('set', currentData[0]?.data.trade_date, "|" , PreTooltipData?.trade_date)
@@ -109,9 +142,6 @@ function DemoMultiLine(){
     PreTooltipData = currentData[0]?.data;
     showTooltip({ x, y });
   };
-  const handleMouseMove = ( plot ) => {
-    console.log('reach?')
-  }
 
   return (
     <div>

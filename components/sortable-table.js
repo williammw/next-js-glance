@@ -8,29 +8,74 @@ const SortableTable = () => {
   const columns = React.useMemo(
     () => [
       {
-        Header: 'First Name',
-        accessor: 'firstName',
+        Header: 'Contract Month',
+        accessor: 'contractMonth',
       },
       {
-        Header: 'Last Name',
-        accessor: 'lastName',
+        Header: '*Open Price',
+        accessor: 'aOpenPrice',
       },
       {
-        Header: 'Age',
-        accessor: 'age',
+        Header: '*Daily High',
+        accessor: 'aDailyHigh',
       },
       {
-        Header: 'Visits',
-        accessor: 'visits',
+        Header: '*Daily Low',
+        accessor: 'aDailyLow',
       },
       {
-        Header: 'Status',
-        accessor: 'status',
+        Header: '*Close Price',
+        accessor: 'aClosePrice',
       },
       {
-        Header: 'Profile Progress',
-        accessor: 'progress',
+        Header: 'Volume',
+        accessor: 'aVolume',
       },
+      {
+        Header: 'dOpen Price',
+        accessor: 'dOpenPrice',
+      },
+      {
+        Header: 'dDaily High',
+        accessor: 'dDailyHigh',
+      },
+      {
+        Header: 'dDaily Low',
+        accessor: 'dDailyLow',
+      },
+      {
+        Header: 'Volume',
+        accessor: 'dVolume',
+      },
+      {
+        Header: 'Settlement Price',
+        accessor: 'dSettlementPrice',
+      },
+      {
+        Header: 'Chg in Setl. Price',
+        accessor: 'dChgInSetlPrice',
+      },
+      {
+        Header: '*Contract High',
+        accessor: 'cContractHigh',
+      },
+      {
+        Header: '*Contract Low',
+        accessor: 'cContractLow',
+      },
+      {
+        Header: 'Volume',
+        accessor: 'cVolume',
+      },
+      {
+        Header: 'Open Interest',
+        accessor: 'cOpenInterest',
+      },
+      {
+        Header: 'Chg in OI',
+        accessor: 'cChgInOI',
+      },
+      
     ],
     []
   )
@@ -59,7 +104,7 @@ const SortableTable = () => {
       })
     )
   }
-
+console.log(data)
   return (
     <div>
       <CssBaseline />

@@ -44,7 +44,12 @@ img {
   width:95% !important;
 }
 .financial-chart-container{
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
+  margin-top: 8px;
+  border-radius: 8px;
+  background-color: white;
+  border: 1px solid #dadce0;
+  padding: 0 16px;
 }
 .MuiBox-root-10 {
   margin-top: 16px !important;
@@ -52,4 +57,19 @@ img {
 }
 .MuiTableCell-root{
   padding: 0 !important;
+  font-size: 0.6rem !important;
+  font-weight:  800 !important;
+}
+.MuiTablePagination-root{
+  overflow:unset !important;
+}
+.sortabletable_container{
+  /* width:600px; */
+}
+input{
+  font-size:0.6rem !important;
+}
+.PrivateSwitchBase-root-17 {
+  padding: 0px !important;
+  font-weight:  100 !important;
 }

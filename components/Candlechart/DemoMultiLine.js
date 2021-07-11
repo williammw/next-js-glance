@@ -45,8 +45,7 @@ function DemoMultiLine(){
     yField: 'amount',
     height: 200,
     slider: {
-      start: 0,
-      end: 1,
+     
     },
     yAxis: {
       // format y axis label style
@@ -82,11 +81,11 @@ function DemoMultiLine(){
     fallingFill: '#ef5350',
     risingFill: '#26a69a',
     meta: {
-      vol: { alias: '成交量' },
-      open: { alias: '开盘价' },
-      close: { alias: '收盘价' },
-      high: { alias: '最高价' },
-      low: { alias: '最低价' },
+      vol: { alias: 'Volume' },
+      open: { alias: 'Open' },
+      close: { alias: 'Close' },
+      high: { alias: 'High' },
+      low: { alias: 'Low' },
     },
     
     tooltip: {
@@ -118,8 +117,6 @@ function DemoMultiLine(){
       },
     },
     slider: {
-      start: 0,
-      end: 1,
     },
   };
 
@@ -127,12 +124,14 @@ function DemoMultiLine(){
   const showTooltip = ({ x, y }) => {
     // console.log('show tooltip', x,y)
     Object.keys(PlotMaps).forEach((plot) => {
+      // console.log(PlotMaps[plot].chart);
       PlotMaps[plot].chart.showTooltip({ x, y });
     });
   };
 
   const setTooltipPosition = (evt, plot) => {
-    // console.log('am i works?', plot);
+    // console.log('am i evt?', evt);
+    // console.log('am i plot?', plot.chart);
     const { x, y } = evt.gEvent;
     const currentData = plot.chart.getTooltipItems({ x, y });
     // console.log('set', currentData[0]?.data.trade_date, "|" , PreTooltipData?.trade_date)
@@ -143,15 +142,23 @@ function DemoMultiLine(){
     showTooltip({ x, y });
   };
 
+  // const onSliderDrag = (evt, plot) => {
+  //   console.log('drage leave')
+  //   console.log(evt.gEvent);
+  // }
+
   return (
     <div>
       <StockChart {...config_stock}
       chartRef={(plot) => {
-        console.log('polt', plot)
+        // console.log('polt', plot)
         PlotMaps.stock = plot;
         plot.on('plot:mousemove', (evt) => {
           setTooltipPosition(evt, plot);
         });
+        // plot.on('slider:mouseup', (evt) => {
+        //   onSliderDrag(evt, plot);
+        // });
       }}
       />
       <ColumnChart
@@ -161,6 +168,9 @@ function DemoMultiLine(){
           plot.on('plot:mousemove', (evt) => {
             setTooltipPosition(evt, plot);
           });
+          // plot.on('slider:mouseup', (evt) => {
+          //   onSliderDrag(evt, plot);
+          // });
         }}
       />      
       {/* <AreaChart

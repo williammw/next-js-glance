@@ -117,6 +117,14 @@ const EnhancedTable = ({
   } = useTable(
     {
       columns,
+      initialState: {
+        sortBy: [
+            {
+                id: 'changeInOI',
+                desc: false
+            }
+        ]
+    },
       data,
       defaultColumn,
       autoResetPage: !skipPageReset,
@@ -126,6 +134,7 @@ const EnhancedTable = ({
       // That way we can call this function from our
       // cell renderer!
       updateMyData,
+
     },
     useGlobalFilter,
     useSortBy,

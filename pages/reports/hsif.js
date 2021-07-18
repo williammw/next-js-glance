@@ -5,11 +5,11 @@ import { signIn, signOut, useSession } from 'next-auth/client'
 import db from '../../utils/firebase/firestore'
 
 // https://blog.jarrodwatts.com/the-ultimate-guide-to-firebase-with-nextjs
-function hsif({posts}) {
+function hsif({hsif}) {
   const [ session, loading ] = useSession()
 
   console.log('session',session)
-  console.log('posts',posts)
+  // console.log('posts',posts)
   
   if (typeof window !== 'undefined' && loading) return null
 
@@ -24,7 +24,7 @@ function hsif({posts}) {
       Signed in as {session.user.email} <br/>
       <button onClick={() => signOut()}>Sign out</button>   
       <div className="sortabletable_container">   
-        <SortableTable />      
+        <SortableTable  hsif={hsif} />      
       </div>
     </>}
     </>
@@ -32,7 +32,7 @@ function hsif({posts}) {
 }
 
 export async function  getServerSideProps(context){
-  let posts = {}
+  let hsif = []
   
     // await the promise
     const querySnapshot = await db
@@ -41,13 +41,19 @@ export async function  getServerSideProps(context){
       https://stackoverflow.com/questions/66064397/nextjs-how-to-correctly-use-getstaticprops-for-firebase
     // "then" part after the await
     querySnapshot.forEach(function (doc) {
-      // console.log(doc.data())
-      posts = JSON.parse(JSON.stringify(doc.data()))
+      const tm = Object.values(doc.data())
+      // console.log('sss', tm.length) 
+      // console.log('docid', doc.id)
+      const docid = doc.id
+      hsif.push({
+        [docid]  : JSON.parse(JSON.stringify(tm))
+      })
+      //JSON.parse(JSON.stringify(doc.data()))
     })
-    // console.log(posts)
+    // console.log('fetchposts', hsif)
   return {
       props: {
-        posts
+        hsif
       }
   }
 }

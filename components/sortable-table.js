@@ -4,49 +4,51 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import EnhancedTable from './hkexTable/EnhancedTable'
 import makeData from '../utils/data/makeData'
 
-const SortableTable = () => {
+
+
+const SortableTable = ({hsif}) => {
   const columns = React.useMemo(
     () => [
       {
         Header: 'Contract Month',
-        accessor: 'contractMonth',
+        accessor: 'ContractMonth',
       },
-      {
-        Header: '*Open Price',
-        accessor: 'aOpenPrice',
-      },
-      {
-        Header: '*Daily High',
-        accessor: 'aDailyHigh',
-      },
-      {
-        Header: '*Daily Low',
-        accessor: 'aDailyLow',
-      },
-      {
-        Header: '*Close Price',
-        accessor: 'aClosePrice',
-      },
-      {
-        Header: 'Volume',
-        accessor: 'aVolume',
-      },
-      {
-        Header: 'dOpen Price',
-        accessor: 'dOpenPrice',
-      },
-      {
-        Header: 'dDaily High',
-        accessor: 'dDailyHigh',
-      },
-      {
-        Header: 'dDaily Low',
-        accessor: 'dDailyLow',
-      },
-      {
-        Header: 'Volume',
-        accessor: 'dVolume',
-      },
+      // {
+      //   Header: '*Open Price',
+      //   accessor: 'nOpenPrice',
+      // },
+      // {
+      //   Header: '*Daily High',
+      //   accessor: 'nDailyHigh',
+      // },
+      // {
+      //   Header: '*Daily Low',
+      //   accessor: 'nDailyLow',
+      // },
+      // {
+      //   Header: '*Close Price',
+      //   accessor: 'nClosePrice',
+      // },
+      // {
+      //   Header: 'Volume',
+      //   accessor: 'nVolume',
+      // },
+      // {
+      //   Header: 'dOpen Price',
+      //   accessor: 'dOpenPrice',
+      // },
+      // {
+      //   Header: 'dDaily High',
+      //   accessor: 'dDailyHigh',
+      // },
+      // {
+      //   Header: 'dDaily Low',
+      //   accessor: 'dDailyLow',
+      // },
+      // {
+      //   Header: 'Volume',
+      //   accessor: 'dVolume',
+      // },
       {
         Header: 'Settlement Price',
         accessor: 'dSettlementPrice',
@@ -57,32 +59,37 @@ const SortableTable = () => {
       },
       {
         Header: '*Contract High',
-        accessor: 'cContractHigh',
+        accessor: 'contractHigh',
       },
       {
         Header: '*Contract Low',
-        accessor: 'cContractLow',
+        accessor: 'contractLow',
       },
       {
         Header: 'Volume',
-        accessor: 'cVolume',
+        accessor: 'volume',
       },
       {
         Header: 'Open Interest',
-        accessor: 'cOpenInterest',
+        accessor: 'openInterest',
       },
       {
         Header: 'Chg in OI',
-        accessor: 'cChgInOI',
+        accessor: 'changeInOI',
       },
       
     ],
     []
   )
-
-  const [data, setData] = React.useState(React.useMemo(() => makeData(500), []))
+  // console.log('hsifR ',hsif[0]['hsif210601f'])
+  // const [data, setData] = React.useState(React.useMemo(() => makeData(500), []))
+  const [data, setData] = React.useState(Object.values(hsif[0]['hsif210601f']))
+  const [hsifall, setHsifall] = React.useState([])
   const [skipPageReset, setSkipPageReset] = React.useState(false)
-
+  const hsifDataAll = (hsif) => {
+    // console.log('hsif',)
+  }
+  hsifDataAll(hsif)
   // We need to keep the table from resetting the pageIndex when we
   // Update data. So we can keep track of that flag with a ref.
 
@@ -104,7 +111,7 @@ const SortableTable = () => {
       })
     )
   }
-console.log(data)
+//  console.log(data)
   return (
     <div>
       <CssBaseline />

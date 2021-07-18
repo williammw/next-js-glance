@@ -12,7 +12,8 @@ import { getSession } from 'next-auth/client'
 import { signIn, signOut, useSession } from 'next-auth/client'
 
 
- function About() {
+ function About({result}) {
+  console.log('result', result)
   const [ session, loading ] = useSession()
   if (typeof window !== 'undefined' && loading) return null
   return (
@@ -36,11 +37,18 @@ import { signIn, signOut, useSession } from 'next-auth/client'
 
 export async function getServerSideProps(context){
 
+  const request = await fetch(`http://localhost:3000/api/hsif/222e2e`)
+  const result = await request.json()
+  console.log(result)
+
   return { 
     props: { 
-      session: await getSession(context)
+      session: await getSession(context),
+      result
     },
   }
 }
+
+
 
 export default About

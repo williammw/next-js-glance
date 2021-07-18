@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { getSession } from 'next-auth/client'
 import { signIn, signOut, useSession } from 'next-auth/client'
 import db from '../../utils/firebase/firestore'
-import TabPanel from '../../components/TabPanel'
+import TabPanel from '../../components/HsifTabPanel'
 
 
 

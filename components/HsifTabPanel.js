@@ -70,13 +70,30 @@ export default function ScrollableTabsButtonAuto({hsif}) {
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
         >
-          <Tab label="Item One" {...a11yProps(0)} />
+          <Tab label="20210601" {...a11yProps(0)} />
           <Tab label="Item Two" {...a11yProps(1)} />
           <Tab label="Item Three" {...a11yProps(2)} />
           <Tab label="Item Four" {...a11yProps(3)} />
           <Tab label="Item Five" {...a11yProps(4)} />
           <Tab label="Item Six" {...a11yProps(5)} />
           <Tab label="Item Seven" {...a11yProps(6)} />
+          <Tab label="Item One" {...a11yProps(7)} />
+          <Tab label="Item Two" {...a11yProps(8)} />
+          <Tab label="Item Three" {...a11yProps(9)} />
+          <Tab label="Item Four" {...a11yProps(10)} />
+          <Tab label="Item Five" {...a11yProps(11)} />
+          <Tab label="Item Six" {...a11yProps(12)} />
+          <Tab label="Item Seven" {...a11yProps(13)} />
+          <Tab label="Item Seven" {...a11yProps(14)} />
+          <Tab label="Item One" {...a11yProps(15)} />
+          <Tab label="Item Two" {...a11yProps(16)} />
+          <Tab label="Item Three" {...a11yProps(17)} />
+          <Tab label="Item Four" {...a11yProps(18)} />
+          <Tab label="Item Five" {...a11yProps(19)} />
+          <Tab label="Item Six" {...a11yProps(20)} />
+          <Tab label="Item Seven" {...a11yProps(21)} />
+          <Tab label="Item Seven" {...a11yProps(22)} />
+
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>

@@ -3,6 +3,9 @@ import Head from 'next/head'
 import { getSession } from 'next-auth/client'
 import { signIn, signOut, useSession } from 'next-auth/client'
 import db from '../../utils/firebase/firestore'
+import TabPanel from '../../components/TabPanel'
+
+
 
 // https://blog.jarrodwatts.com/the-ultimate-guide-to-firebase-with-nextjs
 function hsif({hsif}) {
@@ -24,7 +27,8 @@ function hsif({hsif}) {
       Signed in as {session.user.email} <br/>
       <button onClick={() => signOut()}>Sign out</button>   
       <div className="sortabletable_container">   
-        <SortableTable  hsif={hsif} />      
+        <TabPanel hsif={hsif} />
+        {/* <SortableTable  hsif={hsif} />       */}
       </div>
     </>}
     </>

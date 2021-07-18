@@ -10,11 +10,32 @@ import Copyright from '../src/Copyright';
 import TopNav from '../components/TopNav';
 import { getSession } from 'next-auth/client'
 import { signIn, signOut, useSession } from 'next-auth/client'
-
+// https://nextjs.org/blog/forms
 
  function About({result}) {
   console.log('result', result)
   const [ session, loading ] = useSession()
+
+  const registerUser = async event => {
+    event.preventDefault()
+
+    const res = await fetch(
+      'http://localhost:3000/api/hsif/tradedate?lundui=3737',
+      {
+        body: JSON.stringify({
+          name: event.target.name.value
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'POST'
+      }
+    )
+
+    const result = await res.json()
+    // result.user => 'Ada Lovelace'
+  }
+
   if (typeof window !== 'undefined' && loading) return null
   return (
     <>
@@ -27,8 +48,14 @@ import { signIn, signOut, useSession } from 'next-auth/client'
         <Button variant="contained" color="primary" component={Link} naked href="/">
           Go to the main page
         </Button>
+
         <ProTip />
         <Copyright />
+        <form onSubmit={registerUser}>
+          <label htmlFor="name">Name</label>
+          <input id="name" name="name" type="text" autoComplete="name" required />
+          <button type="submit">Register</button>
+        </form>
       </Box>
     </Container>
     </>

@@ -18,7 +18,6 @@ import { signIn, signOut, useSession } from 'next-auth/client'
 
   const registerUser = async event => {
     event.preventDefault()
-
     const res = await fetch(
       'http://localhost:3000/api/hsif/tradedate',
       {
@@ -33,6 +32,7 @@ import { signIn, signOut, useSession } from 'next-auth/client'
     )
 
     const result = await res.json()
+    // console.log('pageResult', result)
     // result.user => 'Ada Lovelace'
   }
 
@@ -43,7 +43,7 @@ import { signIn, signOut, useSession } from 'next-auth/client'
     <Container maxWidth="sm">
       <Box my={4}>
         <Typography variant="h4" component="h1" gutterBottom>
-          Next.js example
+          This is about page
         </Typography>
         <Button variant="contained" color="primary" component={Link} naked href="/">
           Go to the main page

@@ -5,16 +5,27 @@ export default async (req, res) => {
   if(!req.query || !req.query.id){
     res.status(200).json({ result: '' })
   }
-  // res.status(200).json({ result: req.query })
-  try {
-    const entries = await db.collection('hsif').doc(`hsif${req.query.id}f`);
-    const doc = await entries.get();
-    if (!doc.exists) {
-      console.log('No such document!');
-    } else {
-      res.status(200).json({ [doc.id]:doc.data() })
+  if (req.method === 'POST') {
+    // Process a POST request use body
+    console.log('post method called')
+    console.log(req.body)
+  } else {
+    // Handle any other HTTP method
+    // res.status(200).json({ result: req.query })
+    try {
+      // get use query
+      const entries = await db.collection('hsif').doc(`hsif${req.query.id}f`);
+      const doc = await entries.get();
+      if (!doc.exists) {
+        console.log('No such document!');
+      } else {
+        res.status(200).json({ [doc.id]:doc.data() })
+      }
+    } catch (e) {
+      res.status(400).end();
     }
-  } catch (e) {
-    res.status(400).end();
   }
+
+
+  
 }

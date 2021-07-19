@@ -52,11 +52,20 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ScrollableTabsButtonAuto({hsif}) {
   const classes = useStyles();
+  console.log('hsi', hsif)
   const [value, setValue] = React.useState(0);
-
-  const handleChange = (event, newValue) => {
+  const [tabdata, setTabdata] = React.useState(Object.values(hsif[0]['hsif210601f']))
+  const handleChange = async (event, newValue) => {
+    event.preventDefault()
+    console.log('fuck')
+    const res = await fetch(`http://localhost:3000/api/hsif/tradedate?id=${event.target.innerText}`)
+    const result = await res.json()
+    // console.log(result)
+    setTabdata(result)
     setValue(newValue);
+    
   };
+
 
   return (
     <div className={classes.root}>
@@ -69,53 +78,53 @@ export default function ScrollableTabsButtonAuto({hsif}) {
           variant="scrollable"
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
-        >
-          <Tab label="20210601" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
-          <Tab label="Item Four" {...a11yProps(3)} />
-          <Tab label="Item Five" {...a11yProps(4)} />
-          <Tab label="Item Six" {...a11yProps(5)} />
-          <Tab label="Item Seven" {...a11yProps(6)} />
-          <Tab label="Item One" {...a11yProps(7)} />
-          <Tab label="Item Two" {...a11yProps(8)} />
-          <Tab label="Item Three" {...a11yProps(9)} />
-          <Tab label="Item Four" {...a11yProps(10)} />
-          <Tab label="Item Five" {...a11yProps(11)} />
-          <Tab label="Item Six" {...a11yProps(12)} />
-          <Tab label="Item Seven" {...a11yProps(13)} />
-          <Tab label="Item Seven" {...a11yProps(14)} />
-          <Tab label="Item One" {...a11yProps(15)} />
-          <Tab label="Item Two" {...a11yProps(16)} />
-          <Tab label="Item Three" {...a11yProps(17)} />
-          <Tab label="Item Four" {...a11yProps(18)} />
-          <Tab label="Item Five" {...a11yProps(19)} />
-          <Tab label="Item Six" {...a11yProps(20)} />
-          <Tab label="Item Seven" {...a11yProps(21)} />
-          <Tab label="Item Seven" {...a11yProps(22)} />
+      >
+          <Tab label="210601" {...a11yProps(0)} />
+          <Tab label="210602" {...a11yProps(1)} />
+          <Tab label="210603" {...a11yProps(2)} />
+          <Tab label="210604" {...a11yProps(3)} />
+          <Tab label="210605" {...a11yProps(4)} />
+          <Tab label="210606" {...a11yProps(5)} />
+          <Tab label="210607" {...a11yProps(6)} />
+          <Tab label="210608" {...a11yProps(7)} />
+          <Tab label="210609" {...a11yProps(8)} />
+          <Tab label="210610" {...a11yProps(9)} />
+          <Tab label="210611" {...a11yProps(10)} />
+          <Tab label="210612" {...a11yProps(11)} />
+          <Tab label="210604" {...a11yProps(12)} />
+          <Tab label="210604" {...a11yProps(13)} />
+          <Tab label="210604" {...a11yProps(14)} />
+          <Tab label="210604" {...a11yProps(15)} />
+          <Tab label="210604" {...a11yProps(16)} />
+          <Tab label="210604" {...a11yProps(17)} />
+          <Tab label="210604" {...a11yProps(18)} />
+          <Tab label="210604" {...a11yProps(19)} />
+          <Tab label="210604" {...a11yProps(20)} />
+          <Tab label="210604" {...a11yProps(21)} />
+          <Tab label="210604" {...a11yProps(22)} />
 
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <SortableTable hsif={hsif} />
+        <SortableTable tabdata={tabdata}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+      <SortableTable tabdata={tabdata}/>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+      <SortableTable tabdata={tabdata}/>
       </TabPanel>
       <TabPanel value={value} index={3}>
-        Item Four
+      <SortableTable tabdata={tabdata}/>
       </TabPanel>
       <TabPanel value={value} index={4}>
-        Item Five
+      <SortableTable tabdata={tabdata}/>
       </TabPanel>
       <TabPanel value={value} index={5}>
-        Item Six
+      <SortableTable tabdata={tabdata}/>
       </TabPanel>
       <TabPanel value={value} index={6}>
-        Item Seven
+      <SortableTable tabdata={tabdata}/>
       </TabPanel>
     </div>
   );

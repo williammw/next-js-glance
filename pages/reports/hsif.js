@@ -11,38 +11,27 @@ import TabPanel from '../../components/HsifTabPanel'
 function hsif({hsif}) {
   const [ session, loading ] = useSession()
 
-  console.log('session',session)
-  // console.log('posts',posts)
-  
+
   if (typeof window !== 'undefined' && loading) return null
 
-  return (
-
-<> 
-    {!session && <>
-      Not signed in <br/>
-      <button onClick={() => signIn()}>Sign in</button>
-    </>}
-    {session && <>      
-      Signed in as {session.user.email} <br/>
-      <button onClick={() => signOut()}>Sign out</button>   
-      <div className="sortabletable_container">   
-        <TabPanel hsif={hsif} />
-        {/* <SortableTable  hsif={hsif} />       */}
-      </div>
-    </>}
+  return (<>
+    {session &&  <>
+      <TabPanel hsif={hsif} />
+      </>
+    }
     </>
+
   )
 }
 
 export async function  getServerSideProps(context){
-  let hsif = []
+   let hsif = []
   
     // await the promise
     const querySnapshot = await db
       .collection('hsif')
       .get();
-      https://stackoverflow.com/questions/66064397/nextjs-how-to-correctly-use-getstaticprops-for-firebase
+      // https://stackoverflow.com/questions/66064397/nextjs-how-to-correctly-use-getstaticprops-for-firebase
     // "then" part after the await
     querySnapshot.forEach(function (doc) {
       const tm = Object.values(doc.data())
@@ -54,10 +43,11 @@ export async function  getServerSideProps(context){
       })
       //JSON.parse(JSON.stringify(doc.data()))
     })
-    // console.log('fetchposts', hsif)
+    // console.log('fetchposts', hsif[0])
   return {
       props: {
-        hsif
+        hsif,
+        session: await getSession(context)
       }
   }
 }
@@ -67,3 +57,19 @@ export async function  getServerSideProps(context){
 
 
 export default hsif
+
+
+{/* <> 
+    {!session && <>
+      Not signed in <br/>
+      <button onClick={() => signIn()}>Sign in</button>
+    </>}
+    {session && <>      
+      Signed in as {session.user.email} <br/>
+      <button onClick={() => signOut()}>Sign out</button>   
+      <div className="sortabletable_container">   
+        <TabPanel hsif={hsif} />
+        
+      </div>
+    </>}
+    </> */}

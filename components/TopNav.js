@@ -15,6 +15,8 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import styles from './TopNav.module.css';
+import { getSession } from 'next-auth/client'
+import { signIn, signOut, useSession } from 'next-auth/client'
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
@@ -160,7 +162,9 @@ export default function TopNav() {
       </MenuItem>
     </Menu>
   );
-
+  const [ session, loading ] = useSession()
+  console.log('session topnav',session)
+  if (typeof window !== 'undefined' && loading) return null
   return (
     <div className={classes.grow}>
       <AppBar position="static" className={styles.shadow}>
@@ -197,6 +201,16 @@ export default function TopNav() {
                 <MailIcon />
               </Badge>
             </IconButton> */}
+
+{!session && <>
+      Not signed in <br/>
+      <button onClick={() => signIn()}>Sign in</button>
+    </>}
+    {session && <>      
+      Signed in as {session.user.email} <br/>
+      <button onClick={() => signOut()}>Sign out</button>   
+      
+    </>}
             <IconButton aria-label="show 17 new notifications" color="inherit">
               <Badge badgeContent={17} color="secondary">
                 <NotificationsIcon />

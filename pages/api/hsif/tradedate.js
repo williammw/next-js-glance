@@ -19,7 +19,8 @@ export default async (req, res) => {
       if (!doc.exists) {
         console.log('No such document!');
       } else {
-        res.status(200).json({ [doc.id]:doc.data() })
+        // res.status(200).json({ [doc.id]:doc.data() })
+        res.status(200).json(doc.data())
       }
     } catch (e) {
       res.status(400).end();

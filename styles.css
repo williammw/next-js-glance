@@ -64,7 +64,7 @@ img {
   overflow:unset !important;
 }
 .sortabletable_container{
-  /* width:600px; */
+  width:600px;
 }
 input{
   font-size:0.6rem !important;
@@ -73,3 +73,15 @@ input{
   padding: 0px !important;
   font-weight:  100 !important;
 }
+.MuiTab-textColorPrimary.Mui-selected{
+  color:#222 !important;
+}
+.MuiTab-root{
+  font-size:0.6rem !important;
+  padding: 0px 0px !important;
+  min-height:48px !important;
+}
+.MuiAppBar-colorDefault{
+  background-color:#fff !important;
+}
+.MuiBox-root-15{padding:0 !important}

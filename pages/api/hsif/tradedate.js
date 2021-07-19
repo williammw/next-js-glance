@@ -2,6 +2,9 @@ import db from '../../../utils/firebase/firestore';
 
 export default async (req, res) => {
   console.log('req', req.query.id)
+  if(!req.query || !req.query.id){
+    res.status(200).json({ result: '' })
+  }
   // res.status(200).json({ result: req.query })
   try {
     const entries = await db.collection('hsif').doc(`hsif${req.query.id}f`);

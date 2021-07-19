@@ -20,7 +20,7 @@ import { signIn, signOut, useSession } from 'next-auth/client'
     event.preventDefault()
 
     const res = await fetch(
-      'http://localhost:3000/api/hsif/tradedate?lundui=3737',
+      'http://localhost:3000/api/hsif/tradedate',
       {
         body: JSON.stringify({
           name: event.target.name.value

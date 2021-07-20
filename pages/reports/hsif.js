@@ -4,19 +4,41 @@ import { getSession } from 'next-auth/client'
 import { signIn, signOut, useSession } from 'next-auth/client'
 // import db from '../../utils/firebase/firestore'
 import TabPanel from '../../components/HsifTabPanel'
+import { useEffect } from 'react'
+import { useState } from 'react'
 
 
 
 // https://blog.jarrodwatts.com/the-ultimate-guide-to-firebase-with-nextjs
 function hsif() {
   const [ session, loading ] = useSession()
-
+  const [monthdate, setMonthdate] = useState([])
+  const [tabDate, setTabDate] = useState("")
 
   // if (typeof window !== 'undefined' && loading) return null
+  useEffect(() => {
+    asyncFetch();
+  }, []);
+
+  const asyncFetch = () => {
+   
+
+    const monthArr = ["on9","on9","on9","on9","on9","D2106HK","D2107HK","D2108HK","D2109HK","D2110HK","D2111HK","D2112HK",]
+    setTabDate(monthArr[new Date().getMonth()])
+    fetch(`http://localhost:3000/api/hsif/calendar?date=${monthArr[new Date().getMonth()]}`)
+      .then((response) => response.json())
+      .then((json) => setMonthdate(json.dateNum))
+      .catch((error) => {
+        console.log('fetch data failed', error);
+      });
+  };
+ 
 
   return (<>
-    {session &&  <>
-      <TabPanel hsifDate={'210601'} />
+   {console.log('tabDate',tabDate)}
+{  console.log('monthdate', monthdate.length)}
+    {session  &&  monthdate.length > 0 && <>
+      <TabPanel hsifDate={tabDate} monthdate={monthdate} />
       </>
     }
     </>

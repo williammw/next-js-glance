@@ -50,17 +50,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ScrollableTabsButtonAuto({hsifDate}) {
+
+
+
+
+export default function ScrollableTabsButtonAuto({hsifDate, monthdate}) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
   const [tabdata, setTabdata] = React.useState([])
-  
+  const [currM , setCurrM] = React.useState("0");
   useEffect(() => {
     asyncFetch();
   }, []);
   const asyncFetch = () => {
-    console.log('am i run',hsifDate)
-    fetch(`http://localhost:3000/api/hsif/tradedate?id=${hsifDate}`)
+    const val = String(monthdate[0]).padStart(2,'0')
+    const valp = hsifDate.replace('D','').replace('HK','')
+    setCurrM(valp)
+    const ans = valp+val
+    // console.log(ans)
+    fetch(`http://localhost:3000/api/hsif/tradedate?id=${ans}`)
       .then((response) => response.json())
       .then((json) => setTabdata(json))
       .catch((error) => {
@@ -71,7 +79,7 @@ export default function ScrollableTabsButtonAuto({hsifDate}) {
   // asyncFetch()
   const handleChange = async (event, newValue) => {
     event.preventDefault()
-    console.log('fuck')
+    // console.log('fuck')
     const res = await fetch(`http://localhost:3000/api/hsif/tradedate?id=${event.target.innerText}`)
     const result = await res.json()
     console.log(result)
@@ -93,53 +101,34 @@ export default function ScrollableTabsButtonAuto({hsifDate}) {
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
       >
-          <Tab label="210601" {...a11yProps(0)} />
-          <Tab label="210602" {...a11yProps(1)} />
-          <Tab label="210603" {...a11yProps(2)} />
-          <Tab label="210604" {...a11yProps(3)} />
-          <Tab label="210605" {...a11yProps(4)} />
-          <Tab label="210606" {...a11yProps(5)} />
-          <Tab label="210607" {...a11yProps(6)} />
-          <Tab label="210608" {...a11yProps(7)} />
-          <Tab label="210609" {...a11yProps(8)} />
-          <Tab label="210610" {...a11yProps(9)} />
-          <Tab label="210611" {...a11yProps(10)} />
-          <Tab label="210612" {...a11yProps(11)} />
-          <Tab label="210604" {...a11yProps(12)} />
-          <Tab label="210604" {...a11yProps(13)} />
-          <Tab label="210604" {...a11yProps(14)} />
-          <Tab label="210604" {...a11yProps(15)} />
-          <Tab label="210604" {...a11yProps(16)} />
-          <Tab label="210604" {...a11yProps(17)} />
-          <Tab label="210604" {...a11yProps(18)} />
-          <Tab label="210604" {...a11yProps(19)} />
-          <Tab label="210604" {...a11yProps(20)} />
-          <Tab label="210604" {...a11yProps(21)} />
-          <Tab label="210604" {...a11yProps(22)} />
+          {monthdate.length > 0 && currM != "0" && 
+            monthdate.map((dd, idx) => {
+              let a = currM+String(dd).padStart(2,'0')
+              return (<Tab label={a} {...a11yProps(idx)} key={idx}/>)
+            })
+          } 
+          {/* <Tab label="210601" {...a11yProps(0)} /> */}
+          
 
         </Tabs>
       </AppBar>
-      <TabPanel value={value} index={0}>
-        {Object.values(tabdata).length > 0 && <SortableTable tabdata={tabdata}/> }
-      </TabPanel>
-      <TabPanel value={value} index={1}>
+      {monthdate.length > 0 && currM != "0" && Object.values(tabdata).length > 0 &&
+        monthdate.map((dd, idx) => {
+          let a = currM+String(dd).padStart(2,'0')
+          return (
+          
+          <span key={idx}>
+          <TabPanel value={value} index={idx}>
+            <SortableTable tabdata={tabdata}/> 
+          </TabPanel>
+          </span>
+          )
+        }) 
+      }
+      
+      {/* <TabPanel value={value} index={1}>
       <SortableTable tabdata={tabdata}/>
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-      <SortableTable tabdata={tabdata}/>
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-      <SortableTable tabdata={tabdata}/>
-      </TabPanel>
-      <TabPanel value={value} index={4}>
-      <SortableTable tabdata={tabdata}/>
-      </TabPanel>
-      <TabPanel value={value} index={5}>
-      <SortableTable tabdata={tabdata}/>
-      </TabPanel>
-      <TabPanel value={value} index={6}>
-      <SortableTable tabdata={tabdata}/>
-      </TabPanel>
+      </TabPanel> */}    
     </div>
   );
 }

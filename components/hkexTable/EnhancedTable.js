@@ -94,7 +94,7 @@ EditableCell.propTypes = {
 
 // Set our editable cell renderer as the default Cell renderer
 const defaultColumn = {
-  Cell: EditableCell,
+  // Cell: EditableCell,
 }
 
 const EnhancedTable = ({
@@ -196,14 +196,14 @@ const EnhancedTable = ({
   // Render the UI for your table
   return (
     <TableContainer>
-      <TableToolbar
+      {/* <TableToolbar
         numSelected={Object.keys(selectedRowIds).length}
         deleteUserHandler={deleteUserHandler}
         addUserHandler={addUserHandler}
         preGlobalFilteredRows={preGlobalFilteredRows}
         setGlobalFilter={setGlobalFilter}
         globalFilter={globalFilter}
-      />
+      /> */}
       <MaUTable {...getTableProps()}>
         <TableHead>
           {headerGroups.map(headerGroup => (

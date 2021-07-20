@@ -171,7 +171,7 @@ export default function TopNav() {
   useEffect(() => {
       setMounted(true)
   }, [])
-  
+  console.log(session)
   return (<>
   {mounted && 
     <div className={classes.grow}>

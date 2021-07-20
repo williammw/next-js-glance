@@ -83,7 +83,6 @@ const SortableTable = ({ tabdata}) => {
   )
 
 
-    // console.log('tabdata',Object.values(tabdata))
   // const [data, setData] = React.useState(React.useMemo(() => makeData(500), []))
   const [data, setData] = React.useState(Object.values(tabdata))
   // const [hsifall, setHsifall] = React.useState([])
@@ -110,7 +109,7 @@ const SortableTable = ({ tabdata}) => {
       })
     )
   }
-//  console.log(data)
+  // console.log('sortable',data)
   return (
     <div>
       <CssBaseline />

@@ -17,7 +17,7 @@ import Copyright from '../src/Copyright';
 import TopNav from '../components/TopNav';
 import FinancialChart from '../components/FinancialChart';
 import GlobalSearchBar from '../components/GlobalSearchBar';
-
+// https://github.com/vercel/next.js/discussions/17443
  function Home({results}) {
   const [ session, loading ] = useSession()
   if (typeof window !== 'undefined' && loading) return null

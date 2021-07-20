@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -50,17 +50,31 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ScrollableTabsButtonAuto({hsif}) {
+export default function ScrollableTabsButtonAuto({hsifDate}) {
   const classes = useStyles();
-  console.log('hsi', hsif)
   const [value, setValue] = React.useState(0);
-  const [tabdata, setTabdata] = React.useState(Object.values(hsif[0]['hsif210601f']))
+  const [tabdata, setTabdata] = React.useState([])
+  
+  useEffect(() => {
+    asyncFetch();
+  }, []);
+  const asyncFetch = () => {
+    console.log('am i run',hsifDate)
+    fetch(`http://localhost:3000/api/hsif/tradedate?id=${hsifDate}`)
+      .then((response) => response.json())
+      .then((json) => setTabdata(json))
+      .catch((error) => {
+        console.log('fetch data failed', error);
+      });
+  };
+  
+  // asyncFetch()
   const handleChange = async (event, newValue) => {
     event.preventDefault()
     console.log('fuck')
     const res = await fetch(`http://localhost:3000/api/hsif/tradedate?id=${event.target.innerText}`)
     const result = await res.json()
-    // console.log(result)
+    console.log(result)
     setTabdata(result)
     setValue(newValue);
     
@@ -106,7 +120,7 @@ export default function ScrollableTabsButtonAuto({hsif}) {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <SortableTable tabdata={tabdata}/>
+        {Object.values(tabdata).length > 0 && <SortableTable tabdata={tabdata}/> }
       </TabPanel>
       <TabPanel value={value} index={1}>
       <SortableTable tabdata={tabdata}/>

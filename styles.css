@@ -57,14 +57,14 @@ img {
 }
 .MuiTableCell-root{
   padding: 0 !important;
-  font-size: 0.6rem !important;
-  font-weight:  800 !important;
+  font-size: 0.7rem !important;
+  /* font-weight:  800 !important; */
 }
 .MuiTablePagination-root{
   overflow:unset !important;
 }
 .sortabletable_container{
-  /* width:600px; */
+  width:600px;
 }
 input{
   font-size:0.6rem !important;
@@ -76,7 +76,19 @@ input{
 .MuiTab-textColorPrimary.Mui-selected{
   color:#222 !important;
 }
-
 .MuiTab-root{
-  text-transform:none !important;
+  font-size:0.6rem !important;
+  padding: 0px 0px !important;
+  min-height:48px !important;
+}
+.MuiAppBar-colorDefault{
+  background-color:#fff !important;
+}
+.MuiBox-root-15{padding:0 !important}
+
+th.MuiTableCell-head{
+  font-weight:  800 !important;
+}
+span.MuiTab-wrapper{
+  font-size: 0.7rem !important;
 }

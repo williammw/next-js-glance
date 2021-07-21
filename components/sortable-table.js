@@ -1,12 +1,12 @@
-import React from 'react'
-
+// import React from 'react'
+import React, { useState, useEffect } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline'
 import EnhancedTable from './hkexTable/EnhancedTable'
 import makeData from '../utils/data/makeData'
 
 
 
-const SortableTable = ({hsif}) => {
+const SortableTable = ({ tabdata}) => {
   const columns = React.useMemo(
     () => [
       {
@@ -81,15 +81,13 @@ const SortableTable = ({hsif}) => {
     ],
     []
   )
-  // console.log('hsifR ',hsif[0]['hsif210601f'])
+
+
   // const [data, setData] = React.useState(React.useMemo(() => makeData(500), []))
-  const [data, setData] = React.useState(Object.values(hsif[0]['hsif210601f']))
-  const [hsifall, setHsifall] = React.useState([])
+  const [data, setData] = React.useState(Object.values(tabdata))
+  // const [hsifall, setHsifall] = React.useState([])
   const [skipPageReset, setSkipPageReset] = React.useState(false)
-  const hsifDataAll = (hsif) => {
-    // console.log('hsif',)
-  }
-  hsifDataAll(hsif)
+
   // We need to keep the table from resetting the pageIndex when we
   // Update data. So we can keep track of that flag with a ref.
 
@@ -111,7 +109,7 @@ const SortableTable = ({hsif}) => {
       })
     )
   }
-//  console.log(data)
+  // console.log('sortable',data)
   return (
     <div>
       <CssBaseline />

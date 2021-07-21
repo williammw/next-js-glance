@@ -1,8 +1,10 @@
 import db from '../../../utils/firebase/firestore';
 
+
+
 export default async (req, res) => {
-  console.log('req', req.query.id)
-  if(!req.query || !req.query.id){
+  console.log('req', req.query.date)
+  if(!req.query || !req.query.date){
     res.status(200).json({ result: '' })
   }
   if (req.method === 'POST') {
@@ -14,7 +16,7 @@ export default async (req, res) => {
     // res.status(200).json({ result: req.query })
     try {
       // get use query
-      const entries = await db.collection('hsif').doc(`hsif${req.query.id}f`);
+      const entries = await db.collection('hkex_trading_date').doc(`${req.query.date}`);
       const doc = await entries.get();
       if (!doc.exists) {
         console.log('No such document!');

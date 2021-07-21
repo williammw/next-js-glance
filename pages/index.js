@@ -17,7 +17,7 @@ import Copyright from '../src/Copyright';
 import TopNav from '../components/TopNav';
 import FinancialChart from '../components/FinancialChart';
 import GlobalSearchBar from '../components/GlobalSearchBar';
-
+// https://github.com/vercel/next.js/discussions/17443
  function Home({results}) {
   const [ session, loading ] = useSession()
   if (typeof window !== 'undefined' && loading) return null
@@ -67,17 +67,3 @@ export async function getServerSideProps(context){
 
 export default Home
 
-
-    // {!session && <>
-    // {/* Sign In Page or public content */}
-    //   Not signed in <br/>
-      
-    //   <button onClick={() => signIn()}>Sign in</button>
-    // </>}
-    // {session && <>
-    //   Signed in as {session.user.email} <br/>
-    //   <button onClick={() => signOut()}>Sign out</button>
-    //   <Head>
-    //       <title>title</title>
-    //   </Head>
-    //   <Results results={results}/></>}

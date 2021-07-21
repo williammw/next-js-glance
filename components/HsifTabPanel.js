@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -50,13 +50,44 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ScrollableTabsButtonAuto({hsif}) {
+
+
+
+
+export default function ScrollableTabsButtonAuto({hsifDate, monthdate}) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const [tabdata, setTabdata] = React.useState([])
+  const [currM , setCurrM] = React.useState("0");
+  useEffect(() => {
+    asyncFetch();
+  }, []);
+  const asyncFetch = () => {
+    const val = String(monthdate[0]).padStart(2,'0')
+    const valp = hsifDate.replace('D','').replace('HK','')
+    setCurrM(valp)
+    const ans = valp+val
+    // console.log(ans)
+    fetch(`http://localhost:3000/api/hsif/tradedate?id=${ans}`)
+      .then((response) => response.json())
+      .then((json) => setTabdata(json))
+      .catch((error) => {
+        console.log('fetch data failed', error);
+      });
   };
+  
+  // asyncFetch()
+  const handleChange = async (event, newValue) => {
+    event.preventDefault()
+    // console.log('fuck')
+    const res = await fetch(`http://localhost:3000/api/hsif/tradedate?id=${event.target.innerText}`)
+    const result = await res.json()
+    console.log(result)
+    setTabdata(result)
+    setValue(newValue);
+    
+  };
+
 
   return (
     <div className={classes.root}>
@@ -69,54 +100,35 @@ export default function ScrollableTabsButtonAuto({hsif}) {
           variant="scrollable"
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
-        >
-          <Tab label="20210601" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
-          <Tab label="Item Four" {...a11yProps(3)} />
-          <Tab label="Item Five" {...a11yProps(4)} />
-          <Tab label="Item Six" {...a11yProps(5)} />
-          <Tab label="Item Seven" {...a11yProps(6)} />
-          <Tab label="Item One" {...a11yProps(7)} />
-          <Tab label="Item Two" {...a11yProps(8)} />
-          <Tab label="Item Three" {...a11yProps(9)} />
-          <Tab label="Item Four" {...a11yProps(10)} />
-          <Tab label="Item Five" {...a11yProps(11)} />
-          <Tab label="Item Six" {...a11yProps(12)} />
-          <Tab label="Item Seven" {...a11yProps(13)} />
-          <Tab label="Item Seven" {...a11yProps(14)} />
-          <Tab label="Item One" {...a11yProps(15)} />
-          <Tab label="Item Two" {...a11yProps(16)} />
-          <Tab label="Item Three" {...a11yProps(17)} />
-          <Tab label="Item Four" {...a11yProps(18)} />
-          <Tab label="Item Five" {...a11yProps(19)} />
-          <Tab label="Item Six" {...a11yProps(20)} />
-          <Tab label="Item Seven" {...a11yProps(21)} />
-          <Tab label="Item Seven" {...a11yProps(22)} />
+      >
+          {monthdate.length > 0 && currM != "0" && 
+            monthdate.map((dd, idx) => {
+              let a = currM+String(dd).padStart(2,'0')
+              return (<Tab label={a} {...a11yProps(idx)} key={idx}/>)
+            })
+          } 
+          {/* <Tab label="210601" {...a11yProps(0)} /> */}
+          
 
         </Tabs>
       </AppBar>
-      <TabPanel value={value} index={0}>
-        <SortableTable hsif={hsif} />
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        Item Two
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        Item Four
-      </TabPanel>
-      <TabPanel value={value} index={4}>
-        Item Five
-      </TabPanel>
-      <TabPanel value={value} index={5}>
-        Item Six
-      </TabPanel>
-      <TabPanel value={value} index={6}>
-        Item Seven
-      </TabPanel>
+      {monthdate.length > 0 && currM != "0" && Object.values(tabdata).length > 0 &&
+        monthdate.map((dd, idx) => {
+          let a = currM+String(dd).padStart(2,'0')
+          return (
+          
+          <span key={idx}>
+          <TabPanel value={value} index={idx}>
+            <SortableTable tabdata={tabdata}/> 
+          </TabPanel>
+          </span>
+          )
+        }) 
+      }
+      
+      {/* <TabPanel value={value} index={1}>
+      <SortableTable tabdata={tabdata}/>
+      </TabPanel> */}    
     </div>
   );
 }

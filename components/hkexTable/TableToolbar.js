@@ -47,7 +47,7 @@ const TableToolbar = props => {
         [classes.highlight]: numSelected > 0,
       })}
     >
-      <AddUserDialog addUserHandler={addUserHandler} />
+      {/* <AddUserDialog addUserHandler={addUserHandler} />
       {numSelected > 0 ? (
         <Typography
           className={classes.title}
@@ -60,7 +60,7 @@ const TableToolbar = props => {
         <Typography className={classes.title} variant="h6" id="tableTitle">
           Users
         </Typography>
-      )}
+      )} */}
 
       {numSelected > 0 ? (
         <Tooltip title="Delete">
@@ -87,5 +87,6 @@ TableToolbar.propTypes = {
   preGlobalFilteredRows: PropTypes.array.isRequired,
   globalFilter: PropTypes.string.isRequired,
 }
+
 
 export default TableToolbar

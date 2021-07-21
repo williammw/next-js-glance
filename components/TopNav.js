@@ -15,6 +15,10 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import styles from './TopNav.module.css';
+
+import { useEffect, useState } from 'react';
+// import { getSession } from 'next-auth/client'
+import { signIn, signOut, useSession } from 'next-auth/client'
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
@@ -160,74 +164,95 @@ export default function TopNav() {
       </MenuItem>
     </Menu>
   );
-
-  return (
+  const [ session, loading ] = useSession()
+  // console.log('session topnav',session)
+  // if (typeof window !== 'undefined' && loading) return null
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+      setMounted(true)
+  }, [])
+  console.log(session)
+  return (<>
+  {mounted && 
     <div className={classes.grow}>
-      <AppBar position="static" className={styles.shadow}>
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
+    <AppBar position="static" className={styles.shadow}>
+      <Toolbar>
+        <IconButton
+          edge="start"
+          className={classes.menuButton}
+          color="inherit"
+          aria-label="open drawer"
+        >
+          <MenuIcon />
+        </IconButton>
+        <Typography className={classes.title}  noWrap>
+        期貨/期權 數據
+        </Typography>
+        {/* <div className={classes.search}>
+          <div className={classes.searchIcon}>
+            <SearchIcon />
+          </div>
+          
+          <InputBase
+            placeholder="Search…"
+            classes={{
+              root: classes.inputRoot,
+              input: classes.inputInput,
+            }}
+            inputProps={{ 'aria-label': 'search' }}
+          />
+        </div> */}
+        <div className={classes.grow} />
+        <div className={classes.sectionDesktop}>
+          {/* <IconButton aria-label="show 4 new mails" color="inherit">
+            <Badge badgeContent={4} color="secondary">
+              <MailIcon />
+            </Badge>
+          </IconButton> */}
+
+{!session && <>
+    Not signed in <br/>
+    <button onClick={() => signIn()}>Sign in</button>
+  </>}
+  {session && <>      
+    Signed in as {session.user.email} <br/>
+    <button onClick={() => signOut()}>Sign out</button>   
+    
+  </>}
+          <IconButton aria-label="show 17 new notifications" color="inherit">
+            <Badge badgeContent={17} color="secondary">
+              <NotificationsIcon />
+            </Badge>
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-            People need inspiration and they need guidelines
-          </Typography>
-          {/* <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div> */}
-          <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
-            {/* <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton> */}
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              // onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
-          </div>
-          <div className={classes.sectionMobile}>
-            <IconButton
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
-          </div>
-        </Toolbar>
-      </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
-    </div>
+          <IconButton
+            edge="end"
+            aria-label="account of current user"
+            aria-controls={menuId}
+            aria-haspopup="true"
+            // onClick={handleProfileMenuOpen}
+            color="inherit"
+          >
+            <AccountCircle />
+          </IconButton>
+        </div>
+        <div className={classes.sectionMobile}>
+          <IconButton
+            aria-label="show more"
+            aria-controls={mobileMenuId}
+            aria-haspopup="true"
+            onClick={handleMobileMenuOpen}
+            color="inherit"
+          >
+            <MoreIcon />
+          </IconButton>
+        </div>
+      </Toolbar>
+    </AppBar>
+    {renderMobileMenu}
+    {renderMenu}
+  </div>
+  }
+  </>
+    
   );
 }

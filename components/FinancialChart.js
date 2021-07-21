@@ -19,7 +19,7 @@ const defaultProps = {
 function FinancialChart() {
   return (
     <div className="financial-chart-container">
-      <Typography variant="x" component="x" gutterBottom>
+      {/* <Typography variant="x" component="x" gutterBottom> */}
       {/* <DemoLine />  */}
          {/* <DemoColumn/> */}
           {/* <DemoStock />
@@ -27,7 +27,7 @@ function FinancialChart() {
           {/* <DemoStock/> */}
           <DemoMultiLine/>
           
-      </Typography>
+      {/* </Typography> */}
   
     </div>
   )

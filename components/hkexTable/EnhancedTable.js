@@ -204,7 +204,7 @@ const EnhancedTable = ({
         setGlobalFilter={setGlobalFilter}
         globalFilter={globalFilter}
       />
-      <MaUTable {...getTableProps()}>
+      <MaUTable {...getTableProps()} size="small" aria-label="a dense table">
         <TableHead>
           {headerGroups.map(headerGroup => (
             <TableRow {...headerGroup.getHeaderGroupProps()}>

@@ -73,3 +73,10 @@ input{
   padding: 0px !important;
   font-weight:  100 !important;
 }
+.MuiTab-textColorPrimary.Mui-selected{
+  color:#222 !important;
+}
+
+.MuiTab-root{
+  text-transform:none !important;
+}

@@ -195,7 +195,7 @@ const EnhancedTable = ({
 
   // Render the UI for your table
   return (
-    <TableContainer>
+    <TableContainer size="small" aria-label="a dense table">
       {/* <TableToolbar
         numSelected={Object.keys(selectedRowIds).length}
         deleteUserHandler={deleteUserHandler}

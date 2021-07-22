@@ -35,8 +35,10 @@ function hsif() {
  
 
   return (<>
-   {console.log('tabDate',tabDate)}
-{  console.log('monthdate', monthdate.length)}
+   {/* {console.log('tabDate',tabDate)} */}
+{/* {  console.log('monthdate', monthdate.length)} */}
+{/* a chart goes here */}
+        <h1>Chart show dOpen, dHigh, dLow, dSettlement, openInterest, Volume </h1>
     {session  &&  monthdate.length > 0 && <>
       <TabPanel hsifDate={tabDate} monthdate={monthdate} />
       </>

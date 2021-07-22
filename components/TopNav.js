@@ -168,8 +168,11 @@ export default function TopNav() {
   // console.log('session topnav',session)
   // if (typeof window !== 'undefined' && loading) return null
   const [mounted, setMounted] = useState(false);
+  const [todayDate, setTodayDate] = useState("0")
   useEffect(() => {
       setMounted(true)
+      const utc = new Date().toJSON().slice(0,10).replace(/-/g,'/');
+      setTodayDate(utc)
   }, [])
   console.log(session)
   return (<>
@@ -186,7 +189,7 @@ export default function TopNav() {
           <MenuIcon />
         </IconButton>
         <Typography className={classes.title}  noWrap>
-        期貨/期權 數據
+        期貨/期權 數據  {todayDate}
         </Typography>
         {/* <div className={classes.search}>
           <div className={classes.searchIcon}>

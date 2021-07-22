@@ -33,22 +33,22 @@ const SortableTable = ({ tabdata}) => {
       //   Header: 'Volume',
       //   accessor: 'nVolume',
       // },
-      // {
-      //   Header: 'dOpen Price',
-      //   accessor: 'dOpenPrice',
-      // },
-      // {
-      //   Header: 'dDaily High',
-      //   accessor: 'dDailyHigh',
-      // },
-      // {
-      //   Header: 'dDaily Low',
-      //   accessor: 'dDailyLow',
-      // },
-      // {
-      //   Header: 'Volume',
-      //   accessor: 'dVolume',
-      // },
+      {
+        Header: 'dOpen Price',
+        accessor: 'dOpenPrice',
+      },
+      {
+        Header: 'dDaily High',
+        accessor: 'dDailyHigh',
+      },
+      {
+        Header: 'dDaily Low',
+        accessor: 'dDailyLow',
+      },
+      {
+        Header: 'Volume',
+        accessor: 'dVolume',
+      },
       {
         Header: 'Settlement Price',
         accessor: 'dSettlementPrice',

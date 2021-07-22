@@ -125,7 +125,9 @@ export default function ScrollableTabsButtonAuto({hsifDate, monthdate}) {
           )
         }) 
       }
-      
+      {Object.values(tabdata).length == 0 && <>
+      <h1>Data Not update yet </h1>
+      </>}
       {/* <TabPanel value={value} index={1}>
       <SortableTable tabdata={tabdata}/>
       </TabPanel> */}    

@@ -21,8 +21,6 @@ function hsif() {
   }, []);
 
   const asyncFetch = () => {
-   
-
     const monthArr = ["on9","on9","on9","on9","on9","D2106HK","D2107HK","D2108HK","D2109HK","D2110HK","D2111HK","D2112HK",]
     setTabDate(monthArr[new Date().getMonth()])
     fetch(`http://localhost:3000/api/hsif/calendar?date=${monthArr[new Date().getMonth()]}`)
@@ -32,16 +30,17 @@ function hsif() {
         console.log('fetch data failed', error);
       });
   };
- 
 
-  return (<>
-   {console.log('tabDate',tabDate)}
-{  console.log('monthdate', monthdate.length)}
-    {session  &&  monthdate.length > 0 && <>
+  return (
+  <>
+    {console.log('tabDate',tabDate)}
+    {console.log('monthdate', monthdate.length)}
+    {session  &&  monthdate.length > 0 && 
+    <>
       <TabPanel hsifDate={tabDate} monthdate={monthdate} />
-      </>
-    }
     </>
+    }
+  </>
 
   )
 }

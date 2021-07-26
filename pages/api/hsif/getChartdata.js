@@ -6,17 +6,47 @@ export default async (req, res) => {
   //   res.status(200).json({ result: '' })
   // }
 
+
+
+  /*
+  
+  // Adding the remove to the Array.prototype
+Object.defineProperty(Array.prototype, "remove", {
+    value: function(value) {
+      for(let key in this){
+        if(this[key] === value){
+          this.splice(key,1);
+        }
+      }
+      return this;
+    } 
+});
+
+  */ 
   
   try {
     const entries = await db.collection('hsif').get();
     const entriesData = entries.docs.map(entry => (
       // id: entry.id,
       entry.data()
-    ));
-    // const myJSON = JSON.stringify(entriesData);
+    ))
+    const parentKey = Object.keys(entriesData)
+    const keyList = entries.docs.map( entry => (
+      Object.keys(entry.data())
+    ))
 
 
-    res.status(200).json(entriesData);
+    // let ans = entriesData.filter(entry => entry['JUL-21'].date == '210601' );
+    // console.log(ans)
+    // return (keyList[idx].filter( itm => (
+    //   item[itm].date == '210601'
+    // )))
+    //console.log(keyList.length)
+    //Object.keys(entriesData)
+    //console.log(Object.keys(entriesData[0]))
+    console.log('1',entriesData.length)
+    console.log('2',Object.values(entriesData[0]))
+    res.status(200).json(entriesData[0]["JUL-21"]);
   } catch (e) {
     res.status(400).end();
   }

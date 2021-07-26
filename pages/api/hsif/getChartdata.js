@@ -46,7 +46,12 @@ Object.defineProperty(Array.prototype, "remove", {
     //console.log(Object.keys(entriesData[0]))
     console.log('1',entriesData.length)
     console.log('2',Object.values(entriesData[0]))
-    res.status(200).json(entriesData[0]["JUL-21"]);
+
+    const d = entriesData.map(entry => Object.values(entry)).flat().filter(
+      flatobj => (flatobj.ContractMonth === 'JUL-21' &&  parseInt(flatobj.date) >= 210701 &&  parseInt(flatobj.date) <= 210731)
+    )
+   
+    res.status(200).json(d);
   } catch (e) {
     res.status(400).end();
   }

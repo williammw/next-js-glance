@@ -24,7 +24,7 @@ function hsif() {
     const monthArr = ["on9","on9","on9","on9","on9","D2106HK","D2107HK","D2108HK","D2109HK","D2110HK","D2111HK","D2112HK",]
     setTabDate(monthArr[new Date().getMonth()]) // this get current Month
     // fet each date result
-    fetch(`http://localhost:3000/api/hsif/calendar?date=${monthArr[new Date().getMonth()]}`)
+    fetch(`api/hsif/calendar?date=${monthArr[new Date().getMonth()]}`)
       .then((response) => response.json())
       .then((json) => setMonthdate(json.dateNum))
       .catch((error) => {

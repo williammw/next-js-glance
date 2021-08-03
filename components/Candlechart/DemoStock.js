@@ -7,7 +7,7 @@ function DemoStock() {
     asyncFetch();
   }, []);
   const asyncFetch = () => {
-    fetch('http://localhost:3000/api/demostock')
+    fetch(`${process.env.BASE_URL}api/demostock`)
       .then((response) => response.json())
       .then((json) => setData(json))
       .catch((error) => {

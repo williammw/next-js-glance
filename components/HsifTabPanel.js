@@ -68,7 +68,7 @@ export default function ScrollableTabsButtonAuto({hsifDate, monthdate}) {
     setCurrM(valp)
     const ans = valp+val
     // console.log(ans)
-    fetch(`http://localhost:3000/api/hsif/tradedate?id=${ans}`)
+    fetch(`api/hsif/tradedate?id=${ans}`)
       .then((response) => response.json())
       .then((json) => setTabdata(json))
       .catch((error) => {
@@ -80,7 +80,7 @@ export default function ScrollableTabsButtonAuto({hsifDate, monthdate}) {
   const handleChange = async (event, newValue) => {
     event.preventDefault()
     // console.log('fuck')
-    const res = await fetch(`http://localhost:3000/api/hsif/tradedate?id=${event.target.innerText}`)
+    const res = await fetch(`api/hsif/tradedate?id=${event.target.innerText}`)
     const result = await res.json()
     console.log(result)
     setTabdata(result)

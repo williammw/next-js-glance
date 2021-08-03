@@ -15,7 +15,7 @@ function DemoMultiLine(){
     asyncFetch();
   }, []);
   const asyncFetch = () => {
-    fetch('http://localhost:3000/api/demostock')
+    fetch(`api/demostock`)
       .then((response) => response.json())
       .then((json) => {
         setData(json)

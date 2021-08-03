@@ -7,7 +7,7 @@ function  DemoLine() {
     asyncFetch();
   }, []);
   const asyncFetch = () => {
-    fetch('http://localhost:3000/api/demo')
+    fetch(`${process.env.BASE_URL}api/demo`)
       .then((response) => response.json())
       .then((json) => setData(json))
       .catch((error) => {

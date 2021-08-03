@@ -19,7 +19,7 @@ import { signIn, signOut, useSession } from 'next-auth/client'
   const registerUser = async event => {
     event.preventDefault()
     const res = await fetch(
-      'http://localhost:3000/api/hsif/tradedate',
+      `api/hsif/tradedate`,
       {
         body: JSON.stringify({
           name: event.target.name.value
@@ -64,7 +64,7 @@ import { signIn, signOut, useSession } from 'next-auth/client'
 
 export async function getServerSideProps(context){
 
-  const request = await fetch(`http://localhost:3000/api/hsif/222e2e`)
+  const request = await fetch(`${process.env.BASE_URL}api/hsif/222e2e`)
   const result = await request.json()
   console.log(result)
 

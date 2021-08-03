@@ -2,15 +2,16 @@ import db from '../../../utils/firebase/firestore';
 
 export default async (req, res) => {
   console.log('req', req.query.chartd)
+  console.log('req', req.query.min)
+  console.log('req', req.query.max)
   // if(!req.query || !req.query.date ){
   //   res.status(200).json({ result: '' })
   // }
 
 
 
-  /*
-  
-  // Adding the remove to the Array.prototype
+/*
+// Adding the remove to the Array.prototype
 Object.defineProperty(Array.prototype, "remove", {
     value: function(value) {
       for(let key in this){
@@ -44,13 +45,16 @@ Object.defineProperty(Array.prototype, "remove", {
     //console.log(keyList.length)
     //Object.keys(entriesData)
     //console.log(Object.keys(entriesData[0]))
-    console.log('1',entriesData.length)
-    console.log('2',Object.values(entriesData[0]))
-
+    // console.log('1',entriesData.length)
+    // console.log('2',Object.values(entriesData[0]))
+    console.log('req',req.query.chartd)
+    let cMonth = req.query.chartd || "JUL-21"
+    let minNum = req.query.min || 210701
+    let maxNum = req.query.max  || 210731
     const d = entriesData.map(entry => Object.values(entry)).flat().filter(
-      flatobj => (flatobj.ContractMonth === 'JUL-21' &&  parseInt(flatobj.date) >= 210701 &&  parseInt(flatobj.date) <= 210731)
+      flatobj => (flatobj.ContractMonth === cMonth &&  parseInt(flatobj.date) >= minNum &&  parseInt(flatobj.date) <= maxNum)
     )
-   
+    
     res.status(200).json(d);
   } catch (e) {
     res.status(400).end();

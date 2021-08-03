@@ -23,6 +23,7 @@ function hsif() {
   const asyncFetch = () => {
     const monthArr = ["on9","on9","on9","on9","on9","D2106HK","D2107HK","D2108HK","D2109HK","D2110HK","D2111HK","D2112HK",]
     setTabDate(monthArr[new Date().getMonth()])
+    // get avilable  trading date in repectively month
     fetch(`http://localhost:3000/api/hsif/calendar?date=${monthArr[new Date().getMonth()]}`)
       .then((response) => response.json())
       .then((json) => setMonthdate(json.dateNum))
@@ -33,8 +34,9 @@ function hsif() {
 
   return (<>
    {/* {console.log('tabDate',tabDate)} */}
-{/* {  console.log('monthdate', monthdate.length)} */}
-{/* a chart goes here */}
+  {/* {  console.log('monthdate', monthdate.length)} */}
+  {/* a chart goes here */}
+  {/* date range selector? */}
         <h1>Chart show dOpen, dHigh, dLow, dSettlement, openInterest, Volume </h1>
     {session  &&  monthdate.length > 0 && <>
       <TabPanel hsifDate={tabDate} monthdate={monthdate} />

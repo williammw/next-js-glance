@@ -31,7 +31,7 @@ function hsif() {
         console.log('fetch data failed', error);
       });
   };
-
+  console.log(monthdate)
   return (<>
   {/* {console.log('tabDate',tabDate)} */}
   {/* {console.log('monthdate', monthdate)} */}
